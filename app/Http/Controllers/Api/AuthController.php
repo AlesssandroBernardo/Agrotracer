@@ -30,7 +30,7 @@ class AuthController extends Controller
                     'status' => false,
                     'message' => 'Error en la validación',
                     'errors' => $validator->errors()
-                ], Response::HTTP_UNPROCESSABLE_ENTITY);
+                ], 200);
             }
 
             // Crear usuario
@@ -51,14 +51,14 @@ class AuthController extends Controller
                     'access_token' => $token,
                     'token_type' => 'Bearer'
                 ]
-            ], Response::HTTP_CREATED);
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
                 'message' => 'Error interno del servidor',
                 'error' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], 200);
         }
     }
 
@@ -102,14 +102,14 @@ class AuthController extends Controller
                     'access_token' => $token,
                     'token_type' => 'Bearer'
                 ]
-            ], Response::HTTP_OK);
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
                 'message' => 'Error interno del servidor',
                 'error' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], 200);
         }
     }
 
@@ -125,14 +125,14 @@ class AuthController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Logout exitoso'
-            ], Response::HTTP_OK);
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
                 'message' => 'Error interno del servidor',
                 'error' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], 200);
         }
     }
 
@@ -148,14 +148,14 @@ class AuthController extends Controller
                 'data' => [
                     'user' => $request->user()
                 ]
-            ], Response::HTTP_OK);
+            ], 200);
 
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
                 'message' => 'Error interno del servidor',
                 'error' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], 200);
         }
     }
 }

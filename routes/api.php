@@ -15,21 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Rutas públicas (sin autenticación)
-Route::prefix('auth')->group(function () {
-    Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/login', [AuthController::class, 'login']);
-});
+
 
 // Rutas protegidas (requieren autenticación)
-Route::middleware('auth:sanctum')->group(function () {
-    Route::prefix('auth')->group(function () {
+Route::prefix('auth')->group(function () {
+
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
-        Route::get('/me', [AuthController::class, 'me']);
+        Route::post('/me', [AuthController::class, 'me']);
     });
-    
     // Aquí puedes agregar más rutas protegidas para tu API
-    Route::get('/user', function (Request $request) {
+    Route::post('/user', function (Request $request) {
         return $request->user();
     });
 });
