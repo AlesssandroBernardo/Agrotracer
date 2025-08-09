@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
     /**
-     * Registro de usuario
+     * @unauthenticated
      */
     public function register(Request $request)
     {
@@ -52,7 +52,6 @@ class AuthController extends Controller
                     'token_type' => 'Bearer'
                 ]
             ], 200);
-
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
@@ -63,7 +62,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Login de usuario
+     * @unauthenticated
      */
     public function login(Request $request)
     {
@@ -103,7 +102,6 @@ class AuthController extends Controller
                     'token_type' => 'Bearer'
                 ]
             ], 200);
-
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
@@ -113,9 +111,7 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * Logout de usuario
-     */
+
     public function logout(Request $request)
     {
         try {
@@ -126,7 +122,6 @@ class AuthController extends Controller
                 'status' => true,
                 'message' => 'Logout exitoso'
             ], 200);
-
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
@@ -149,7 +144,6 @@ class AuthController extends Controller
                     'user' => $request->user()
                 ]
             ], 200);
-
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
