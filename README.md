@@ -1,15 +1,146 @@
+# Agrotracer API
+
+Sistema de trazabilidad agrícola desarrollado con Laravel para el manejo y seguimiento de productos agrícolas.
+
+## 🚀 Características
+
+- **API RESTful** completa para gestión de datos agrícolas
+- **Autenticación segura** con Laravel Sanctum (tokens Bearer)
+- **Sistema de usuarios** con registro, login y logout
+- **Base de datos** SQLite para desarrollo
+- **Documentación completa** de la API
+
+## 📋 Requisitos
+
+- PHP >= 8.2
+- Composer
+- SQLite (incluido con PHP)
+- Git
+
+## 🛠️ Instalación
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/AlesssandroBernardo/Agrotracer.git
+   cd agrotracer
+   ```
+
+2. **Instalar dependencias:**
+   ```bash
+   composer install
+   ```
+
+3. **Configurar el entorno:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. **Ejecutar migraciones:**
+   ```bash
+   php artisan migrate
+   ```
+
+5. **Iniciar servidor de desarrollo:**
+   ```bash
+   php artisan serve
+   ```
+
+## 📖 Documentación de la API
+
+La documentación completa de la API se encuentra en: [API_DOCUMENTATION.md](./API_DOCUMENTATION.md)
+
+### Endpoints principales:
+
+- `POST /api/auth/register` - Registro de usuarios
+- `POST /api/auth/login` - Inicio de sesión
+- `GET /api/auth/me` - Información del usuario autenticado
+- `POST /api/auth/logout` - Cerrar sesión
+
+### Ejemplo de uso:
+
+```bash
+# Registro de usuario
+curl -X POST http://localhost:8000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Alessandro Bernardo",
+    "email": "alessandro@example.com",
+    "password": "password123",
+    "password_confirmation": "password123"
+  }'
+
+# Login
+curl -X POST http://localhost:8000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "alessandro@example.com",
+    "password": "password123"
+  }'
+```
+
+## 🏗️ Arquitectura
+
+- **Framework:** Laravel 11
+- **Autenticación:** Laravel Sanctum
+- **Base de datos:** SQLite (desarrollo)
+- **API:** RESTful con respuestas JSON
+- **Control de versiones:** Git con GitHub
+
+## 🔧 Tecnologías utilizadas
+
+- **Backend:** PHP 8.2+ con Laravel 11
+- **Autenticación:** Laravel Sanctum (tokens Bearer)
+- **Base de datos:** SQLite
+- **Control de versiones:** Git/GitHub
+- **Servidor web:** Apache (XAMPP) / Artisan serve
+
+## 📁 Estructura del proyecto
+
+```
+agrotracer/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   └── Api/
+│   │   │       └── AuthController.php
+│   │   └── Requests/
+│   │       └── Auth/
+│   └── Models/
+│       └── User.php
+├── config/
+│   ├── auth.php
+│   └── sanctum.php
+├── database/
+│   ├── migrations/
+│   └── database.sqlite
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── API_DOCUMENTATION.md
+```
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+## 📞 Contacto
+
+Alessandro Bernardo - ABernardoE@hotmail.com
+
+Enlace del proyecto: [https://github.com/AlesssandroBernardo/Agrotracer](https://github.com/AlesssandroBernardo/Agrotracer)
+
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
